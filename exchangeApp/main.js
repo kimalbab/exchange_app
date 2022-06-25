@@ -69,6 +69,7 @@ function convert() {
     document.getElementById("to-input").value = convertedAmount;
 }
 
+/*
 function change_option(currencyRatio) {
     if(currencyRatio == "USD") {
         document.querySelectorAll("#money").innerText = "달러";
@@ -76,5 +77,4 @@ function change_option(currencyRatio) {
         document.querySelectorAll("#money").innerText = "원";
     } else (currencyRatio == "UGX") {
         document.querySelectorAll("#money").innerText = "실링";
-    }
-}
+    }*/
