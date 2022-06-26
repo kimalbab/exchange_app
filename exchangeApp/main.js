@@ -9,27 +9,31 @@
 
 let currencyRatio = {
         USD:{
-            KRW : 1246.17,
+            KRW : 1289.29,
             USD : 1,
-            UGX : 3755.97 ,
+            UGX : 3756.68 ,
             unit : "달러"
         },
         KRW:{
             KRW : 1,
             USD : 0.00080,
-            UGX : 3.01,
+            UGX : 2.91,
             unit : "원"
         },
         UGX:{
-            KRW : 0.33,
+            KRW : 0.34,
             USD : 0.00027,
             UGX : 1,
             unit : "실링"
         }
 }
 
-let yfromCurrenc = "USD";
+const money = document.querySelectorAll(".money");
+
+let fromCurrency = "USD";
 let toCurrency = "USD";
+
+
 
 document.querySelectorAll("#from-currency-list a")
 .forEach((menu)=>menu.addEventListener("click", function(){
@@ -39,7 +43,10 @@ document.querySelectorAll("#from-currency-list a")
     document.getElementById("from-button").textContent = this.textContent;
     //3. 선택된 currency 값을 변수에 저장
     fromCurrency = this.textContent;
+    let num = 0;
+    change_option(fromCurrency, num);
     convert();
+   
 }));
 
 
@@ -51,6 +58,8 @@ document.querySelectorAll("#to-currency-list a")
     document.getElementById("to-button").textContent = this.textContent;
     //3. 선택된 currency 값을 변수에 저장
     toCurrency = this.textContent;
+    let num = 1;
+    change_option(toCurrency, num);
     convert();
 }))
 
@@ -65,16 +74,19 @@ function convert() {
     let convertedAmount = amount * currencyRatio[fromCurrency][toCurrency];
     
     console.log("환전 결과!", convertedAmount);
-
+    
     document.getElementById("to-input").value = convertedAmount;
+     
 }
 
-/*
-function change_option(currencyRatio) {
-    if(currencyRatio == "USD") {
-        document.querySelectorAll("#money").innerText = "달러";
-    } else if (currencyRatio == "KRW") {
-        document.querySelectorAll("#money").innerText = "원";
-    } else (currencyRatio == "UGX") {
-        document.querySelectorAll("#money").innerText = "실링";
-    }*/
+
+
+function change_option(currency, num) {
+    if(currency === "USD") {
+        money[num].innerText = "달러";
+    } else if (currency === "KRW") {
+        money[num].innerText = "원";
+    } else {
+        money[num].innerText = "실링";
+    }
+}
